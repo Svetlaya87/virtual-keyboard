@@ -20,6 +20,22 @@ let lettersLineQP = [
     ["DEL"],
 ];
 
+let lettersLineAL = [
+    ["CAPS LOCK"],
+    ["A", "Ф"],
+    ["S", "Ы"],
+    ["D", "В"],
+    ["F", "А"],
+    ["G", "П"],
+    ["H", "Р"],
+    ["J", "О"],
+    ["K", "Л"],
+    ["L", "Д"],
+    [";", "Ж"],
+    ["'", "Э"],
+    ["ENTER"]
+]
+
 
 
 let body = document.querySelector('body');
@@ -39,12 +55,19 @@ console.log(KeyBoardContainer);
 
 
 let keyNumberContainer = document.createElement('div');
+keyNumberContainer.id = 'number-keys';
 keyNumberContainer.className = "key-line";
 KeyBoardContainer.insertAdjacentElement('beforeend', keyNumberContainer);
 
 let keyQPContainer = document.createElement('div');
+keyQPContainer.id = "letters-qp-keys";
 keyQPContainer.className = "key-line";
 KeyBoardContainer.insertAdjacentElement('beforeend', keyQPContainer);
+
+let keyALContainer = document.createElement('div');
+keyALContainer.id = "letters-al-keys";
+keyALContainer.className = "key-line";
+KeyBoardContainer.insertAdjacentElement('beforeend', keyALContainer);
 
 function insertLineOfKeys (arr, tag){
     for(let i=0; i< arr.length; i++){
@@ -68,6 +91,7 @@ function insertLineOfKeys (arr, tag){
 }
 
 insertLineOfKeys(lettersLineQP, keyQPContainer);
+insertLineOfKeys(lettersLineAL, keyALContainer);
 
 for(let i=0; i<numberKeys.length; i++){
     let keyDiv = document.createElement('div');
@@ -99,3 +123,9 @@ for (let el of firstSpan){
 
 let tab = document.querySelector(".key-line:nth-child(2) div:first-child");
 tab.classList.add("tab");
+
+let capsLock = document.querySelector("#letters-al-keys .key:first-child");
+capsLock.classList.add("caps-lock");
+
+let enter = document.querySelector("#letters-al-keys .key:last-child");
+enter.classList.add("enter");

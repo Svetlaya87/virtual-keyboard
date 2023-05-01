@@ -26,7 +26,7 @@ body {
 
 .container {
     padding: 4px;
-    height: 400px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,16 +72,25 @@ body {
     text-align: center;
 }
 
+.space {
+    width: 340px;
+}
+
+.ctrl {
+    width: 68px;
+}
+
 .key-img,
 .key-single {
     flex-direction: row;
     justify-content: center;
 }
 
-.img-vertical-arrows {
+.img-arrows {
 
     align-self: center;
     width: 50%;
+    height: 75%;
     display: flex;
 }
 

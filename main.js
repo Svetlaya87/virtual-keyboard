@@ -51,6 +51,18 @@ let lettersLineZM = [
     ["/"],
     [""],
     ["Shift"],
+];
+
+let funcKeys = [
+    ["Ctrl"],
+    ["Win"],
+    ["Alt"],
+    ["Space"],
+    ["Alt"],
+    ["Ctrl"],
+    [""],
+    [""],
+    [""],
 ]
 
 
@@ -91,6 +103,11 @@ keyZMContainer.id = "letters-zm-keys";
 keyZMContainer.className = "key-line";
 KeyBoardContainer.insertAdjacentElement('beforeend', keyZMContainer);
 
+let keyFuncKeysContainer = document.createElement('div');
+keyFuncKeysContainer.id = "letters-func-keys";
+keyFuncKeysContainer.className = "key-line";
+KeyBoardContainer.insertAdjacentElement('beforeend', keyFuncKeysContainer);
+
 function insertLineOfKeys (arr, tag){
     for(let i=0; i< arr.length; i++){
         let keyDiv = document.createElement('div');
@@ -115,6 +132,7 @@ function insertLineOfKeys (arr, tag){
 insertLineOfKeys(lettersLineQP, keyQPContainer);
 insertLineOfKeys(lettersLineAL, keyALContainer);
 insertLineOfKeys(lettersLineZM, keyZMContainer);
+insertLineOfKeys(funcKeys, keyFuncKeysContainer);
 
 for(let i=0; i<numberKeys.length; i++){
     let keyDiv = document.createElement('div');
@@ -156,13 +174,44 @@ enter.classList.add("enter");
 let shift = document.querySelector("#letters-zm-keys .key:first-child");
 shift.classList.add("shift");
 
-let arrowUp  = document.querySelector("#letters-zm-keys .key:nth-child(13)");
-arrowUp.classList.add("key-img");
-let imgArrowUp = document.createElement("img");
-imgArrowUp.src="./svg/arrow-up.svg";
-imgArrowUp.classList.add("img-vertical-arrows");
-arrowUp.insertAdjacentElement("beforeend", imgArrowUp);
-
-
 let slash  = document.querySelector("#letters-zm-keys .key:nth-child(12)");
 slash.classList.add("key-single");
+
+let arrowUp  = document.querySelector("#letters-zm-keys .key:nth-child(13)");
+let arrowLeft  = document.querySelector("#letters-func-keys .key:nth-child(7)");
+let arrowDown  = document.querySelector("#letters-func-keys .key:nth-child(8)");
+let arrowRight  = document.querySelector("#letters-func-keys .key:nth-child(9)");
+
+let arrows = [
+    [arrowUp, "./svg/arrow-up.svg" ],
+    [arrowLeft, "./svg/arrow-left.svg"],
+    [arrowRight, "./svg/arrow-right.svg"],
+    [arrowDown, "./svg/arrow-down.svg"]
+]
+
+function insertArrowImg(arrow, link){
+
+  arrow.classList.add("key-img");
+  let img = document.createElement("img");
+  img.src= link;
+  img.classList.add("img-arrows");
+  arrow.insertAdjacentElement("beforeend", img);
+
+}
+
+insertArrowImg(arrowUp, arrows[0][1]);
+insertArrowImg(arrowLeft, arrows[1][1]);
+insertArrowImg(arrowRight, arrows[2][1]);
+insertArrowImg(arrowDown, arrows[3][1]);
+
+let space  = document.querySelector("#letters-func-keys .key:nth-child(4)");
+space.classList.add("space");
+
+let ctrl = document.querySelector("#letters-func-keys .key:nth-child(1)");
+ctrl.classList.add("ctrl");
+
+
+
+
+
+

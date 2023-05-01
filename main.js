@@ -240,7 +240,6 @@ document.addEventListener('keyup', function(e){
 
     let res= excluds.filter( function (el, i) { return e.code.indexOf(el) !== -1});
 
-    console.log(res);
 
     if( document.getElementById(e.code) !== null ){
         document.getElementById(e.code).classList.remove('key-key-down');
@@ -249,10 +248,36 @@ document.addEventListener('keyup', function(e){
 });
 
 
-/*
+let allkeys = document.querySelectorAll('.key');
+for(let i=0; i< allkeys.length; i++){
+    allkeys[i].addEventListener("mousedown", function(e){
+        console.log(e.currentTarget.innerText);
+        if( e.currentTarget.innerText == "\\" || e.currentTarget.innerText == "/" ){
+            textArea.value += e.currentTarget.innerText;
+            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
 
-if( a !== (b && c && d) )
+        } else if( excluds.indexOf(e.currentTarget.id) == -1 && document.getElementById(e.currentTarget.id) !== null){
+            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+            if(document.activeElement !== textArea && !e.shiftKey) {
+                
+                textArea.value += e.currentTarget.childNodes[0].innerText.toLowerCase();
+            
+                console.log(textArea);
+            }else if (document.activeElement !== textArea && e.shiftKey){
+                textArea.value += e.currentTarget.childNodes[0].innerText.toUpperCase();
+            }
+        }
 
+    });
+}
 
-*/
+for(let i=0; i< allkeys.length; i++){
+    allkeys[i].addEventListener("mouseup", function(e){
+        console.log(e.currentTarget.childNodes);
+        if( excluds.indexOf(e.currentTarget.id) == -1 && document.getElementById(e.currentTarget.id) !== null){
+            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+        
+        }
 
+    });
+}

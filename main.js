@@ -210,7 +210,7 @@ let ctrl = document.querySelector("#letters-func-keys .key:nth-child(1)");
 ctrl.classList.add("ctrl");
 
 
-let excluds = ["ShiftLeft", "ShiftRight", "ControlLeft", "ControlRight", "AltLeft", "AltRight", "CapsLock", "Tab", "MetaLeft", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown","Enter", "Backspace", "WakeUp", "Escape"];
+let excluds = ["ShiftLeft", "ShiftRight", "ControlLeft", "ControlRight", "AltLeft", "AltRight", "CapsLock", "Tab", "MetaLeft", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown","Enter", "Backspace", "WakeUp", "Escape", "Delete", "NumLock", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7", "Numpad8", "Numpad9", "Numpad0", "NumpadDivide", "NumpadMultiply", "NumpadSubtract", "NumpadAdd", "NumpadEnter", "NumpadDecimal"];
 /*----события клавиатуры----*/
 document.addEventListener('keydown', function(e){
     
@@ -218,15 +218,20 @@ document.addEventListener('keydown', function(e){
 
     console.log(res);
 
-    if( res.length == 0){
+    if( res.length == 0 && document.getElementById(e.code) !== null){
         if(document.activeElement !== textArea) {
         
 
             textArea.value += e.key;
         }
-        document.getElementById(e.code).classList.add('key-key-down');
+    }    
 
+    if( document.getElementById(e.code) !== null ){
+        document.getElementById(e.code).classList.add('key-key-down');
     }
+        
+
+    
     
    
 });
@@ -237,19 +242,10 @@ document.addEventListener('keyup', function(e){
 
     console.log(res);
 
-    if( res.length == 0){
+    if( document.getElementById(e.code) !== null ){
         document.getElementById(e.code).classList.remove('key-key-down');
-    }
-});
-
-
-/*----события мыши----*/
-document.addEventListener('onclick', function(e){
-    if(document.activeElement !== textArea) {
-
-      textArea.value += e.key;
-    }
-    document.getElementById(e.code).classList.add('key-key-down');
+    }    
+    
 });
 
 

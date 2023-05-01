@@ -58,7 +58,7 @@ let lettersLineZM = [
     ["KeyV", "V", "М"],
     ["KeyB", "B", "И"],
     ["KeyN", "N", "Т"],
-    ["M", "Ь"],
+    ["KeyM", "M", "Ь"],
     ["Comma", ",", "Б"],
     ["Period", ".", "Ю"],
     ["Slash", "/"],
@@ -123,8 +123,9 @@ KeyBoardContainer.insertAdjacentElement('beforeend', keyFuncKeysContainer);
 
 function insertLineOfKeys (arr, tag){
     for(let i=0; i< arr.length; i++){
-        let keyDiv = document.createElement('div');
-        if( arr[i].length == 2 ){
+      
+      let keyDiv = document.createElement('div');
+      if( arr[i].length == 2 ){
             keyDiv.innerText = arr[i][1];
     
         }else {
@@ -209,8 +210,53 @@ let ctrl = document.querySelector("#letters-func-keys .key:nth-child(1)");
 ctrl.classList.add("ctrl");
 
 
+let excluds = ["ShiftLeft", "ShiftRight", "ControlLeft", "ControlRight", "AltLeft", "AltRight", "CapsLock", "Tab", "MetaLeft", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown","Enter", "Backspace", "WakeUp", "Escape"];
+/*----события клавиатуры----*/
+document.addEventListener('keydown', function(e){
+    
+    let res= excluds.filter( function (el, i) { return e.code.indexOf(el) !== -1});
+
+    console.log(res);
+
+    if( res.length == 0){
+        if(document.activeElement !== textArea) {
+        
+
+            textArea.value += e.key;
+        }
+        document.getElementById(e.code).classList.add('key-key-down');
+
+    }
+    
+   
+});
+
+document.addEventListener('keyup', function(e){
+
+    let res= excluds.filter( function (el, i) { return e.code.indexOf(el) !== -1});
+
+    console.log(res);
+
+    if( res.length == 0){
+        document.getElementById(e.code).classList.remove('key-key-down');
+    }
+});
 
 
+/*----события мыши----*/
+document.addEventListener('onclick', function(e){
+    if(document.activeElement !== textArea) {
+
+      textArea.value += e.key;
+    }
+    document.getElementById(e.code).classList.add('key-key-down');
+});
 
 
+/*
+
+if( a !== (b && c && d) )
+
+
+*/
 

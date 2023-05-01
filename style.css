@@ -38,12 +38,15 @@ body {
     width: 48px;
     height: 48px;
     padding: 4px;
+    background-color: #fff;
     border: 1px solid #507bf0;
     border-radius: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background-color 0.3s linear;
+    transition: border-radius 0.3s linear;
 
 }
 

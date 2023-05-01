@@ -1,68 +1,81 @@
 let numberKeys = [
-    ["~" , "`"],  ["!", 1], ["@", 2], ["#", 3], ["$", 4], ["%", 5], [":", 6], ["?", 7], ["*", 8], ["(", 9], [")", 0], ["-", "_"], ["+", "="], ['Backspace']
+    ["Backquote", "~" , "`"],
+    ["Digit1", "!", "1"], 
+    ["Digit2", "@", "2"], 
+    ["Digit3", "#", "3"], 
+    ["Digit4", "$", "4"], 
+    ["Digit5", "%", "5"], 
+    ["Digit6", ":", "6"], 
+    ["Digit7", "?", "7"], 
+    ["Digit8", "*", "8"], 
+    ["Digit9", "(", "9"], 
+    ["Digit0", ")", "0"], 
+    ["Minus", "-", "_"], 
+    ["Equal", "+", "="], 
+    ["Backspace", "Backspace"]
 ];
 
 let lettersLineQP = [
-    ["Tab"],
-    ["Q", "Й"], //81
-    ["W", "Ц"],
-    ["E", "У"],//U+423 У
-    ["R", "К"], //К
-    ["T", "Е"],//Е
-    ["Y", "Н"], //Н
-    ["U", "Г"],
-    ["I", "Ш"],
-    ["O", "Щ"],
-    ["P", "З"], //З
-    ["[", "Х"], //Х
-    ["]", "Ъ"],
-    ["/", "\\"],
-    ["DEL"],
+    ["Tab", "Tab"],
+    ["KeyQ", "Q", "Й"], //81
+    ["KeyW", "W", "Ц"],
+    ["KeyE", "E", "У"],//U+423 У
+    ["KeyR", "R", "К"], //К
+    ["KeyT", "T", "Е"],//Е
+    ["KeyY", "Y", "Н"], //Н
+    ["KeyU", "U", "Г"],
+    ["KeyI", "I", "Ш"],
+    ["KeyO", "O", "Щ"],
+    ["KeyP", "P", "З"], //З
+    ["BracketLeft", "[", "Х"], //Х
+    ["BracketRight", "]", "Ъ"],
+    ["Backslash", "/", "\\"],
+    ["Delete", "DEL"],
 ];
 
 let lettersLineAL = [
-    ["CAPS LOCK"],
-    ["A", "Ф"],
-    ["S", "Ы"],
-    ["D", "В"],
-    ["F", "А"],
-    ["G", "П"],
-    ["H", "Р"],
-    ["J", "О"],
-    ["K", "Л"],
-    ["L", "Д"],
-    [";", "Ж"],
-    ["'", "Э"],
-    ["ENTER"]
+    ["CapsLock", "CAPS LOCK"],
+    ["KeyA", "A", "Ф"],
+    ["KeyS", "S", "Ы"],
+    ["KeyD", "D", "В"],
+    ["KeyF", "F", "А"],
+    ["KeyG", "G", "П"],
+    ["KeyH", "H", "Р"],
+    ["KeyJ", "J", "О"],
+    ["KeyK", "K", "Л"],
+    ["KeyL", "L", "Д"],
+    ["Semicolon", ";", "Ж"],
+    ["Quote", "'", "Э"],
+    ["Enter", "ENTER"]
 ];
 
 let lettersLineZM = [
-    ["Shift"],
-    ["\\"],
-    ["Z", "Я"],
-    ["X", "Ч"],
-    ["C", "С"],
-    ["V", "М"],
-    ["B", "И"],
-    ["N", "Т"],
+    ["ShiftLeft", "Shift"],
+    ["IntlBackslash", "\\"],
+    ["KeyZ", "Z", "Я"],
+    ["KeyX", "X", "Ч"],
+    ["KeyC", "C", "С"],
+    ["KeyV", "V", "М"],
+    ["KeyB", "B", "И"],
+    ["KeyN", "N", "Т"],
     ["M", "Ь"],
-    [".", "Б"],
-    [",", "Ю"],
-    ["/"],
-    [""],
-    ["Shift"],
+    ["Comma", ",", "Б"],
+    ["Period", ".", "Ю"],
+    ["Slash", "/"],
+    ["ArrowUp", ""],
+    ["ShiftRight", "Shift"],
 ];
 
 let funcKeys = [
-    ["Ctrl"],
-    ["Win"],
-    ["Alt"],
-    ["Space"],
-    ["Alt"],
-    ["Ctrl"],
-    [""],
-    [""],
-    [""],
+    ["ControlLeft", "Ctrl"],
+    ["MetaLeft", "Win"],
+    ["AltLeft", "Alt"],
+    ["Space", "Space"],
+    ["AltRight", "Alt"],
+    ["ControlRight", "Ctrl"],
+    ["ArrowLeft", ""],
+    ["ArrowDown", ""],
+    ["ArrowRight", ""],
 ]
 
 
@@ -111,53 +124,38 @@ KeyBoardContainer.insertAdjacentElement('beforeend', keyFuncKeysContainer);
 function insertLineOfKeys (arr, tag){
     for(let i=0; i< arr.length; i++){
         let keyDiv = document.createElement('div');
-        if( arr[i].length == 1 ){
-            keyDiv.innerText = arr[i];
+        if( arr[i].length == 2 ){
+            keyDiv.innerText = arr[i][1];
     
         }else {
-            arr[i].forEach(function(element){
+            //arr[i].forEach(function(element){
+            for(let j=1; j<arr[i].length; j++){
                 let span = document.createElement('span');
-                span.innerText = element;
+                span.innerText = arr[i][j];
                 keyDiv.insertAdjacentElement("beforeend", span);
                 //return keyDiv;
-            });
+            }//});
     
         }
     
         keyDiv.className= "key";
+        keyDiv.id= arr[i][0];
         tag.insertAdjacentElement("beforeend", keyDiv);
     }
 }
 
+insertLineOfKeys(numberKeys, keyNumberContainer);
 insertLineOfKeys(lettersLineQP, keyQPContainer);
 insertLineOfKeys(lettersLineAL, keyALContainer);
 insertLineOfKeys(lettersLineZM, keyZMContainer);
 insertLineOfKeys(funcKeys, keyFuncKeysContainer);
 
-for(let i=0; i<numberKeys.length; i++){
-    let keyDiv = document.createElement('div');
-    if( numberKeys[i].length == 1 ){
-        keyDiv.innerText = numberKeys[i];
-
-    }else {
-        numberKeys[i].forEach(function(element){
-            let span = document.createElement('span');
-            span.innerText = element;
-            keyDiv.insertAdjacentElement("beforeend", span);
-            //return keyDiv;
-        });
-
-    }
-
-    keyDiv.className= "key";
-    keyNumberContainer.insertAdjacentElement("beforeend", keyDiv);
-}
 
 let backSpace = document.querySelector(".key-line div:last-child");
 
 backSpace.classList.add("backspace");
 let firstSpan = document.querySelectorAll(".key-line div span:first-child");
-console.log(firstSpan);
+
 for (let el of firstSpan){
     el.classList.add("key-first-span");
 }
@@ -209,6 +207,7 @@ space.classList.add("space");
 
 let ctrl = document.querySelector("#letters-func-keys .key:nth-child(1)");
 ctrl.classList.add("ctrl");
+
 
 
 

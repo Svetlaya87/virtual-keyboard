@@ -46,18 +46,19 @@ body {
     flex-direction: column;
     align-items: center;
     
-    transition: all 0.3s linear;
+    transition: all 0.4s linear;
 
+}
+
+.key:hover {
+    background-color: rgb(204, 220, 246);
 }
 
 .key:active,
 .key-key-down {
-    background-color: rgb(112, 159, 234);
+    background-color: rgb(112, 156, 227);
     border-radius: 20px;
 }
-
-
-
 
 .key-first-span {
 

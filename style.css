@@ -45,8 +45,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: background-color 0.3s linear;
-    transition: border-radius 0.3s linear;
+    
+    transition: all 0.3s linear;
 
 }
 

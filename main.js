@@ -34,6 +34,23 @@ let lettersLineAL = [
     [";", "Ж"],
     ["'", "Э"],
     ["ENTER"]
+];
+
+let lettersLineZM = [
+    ["Shift"],
+    ["\\"],
+    ["Z", "Я"],
+    ["X", "Ч"],
+    ["C", "С"],
+    ["V", "М"],
+    ["B", "И"],
+    ["N", "Т"],
+    ["M", "Ь"],
+    [".", "Б"],
+    [",", "Ю"],
+    ["/"],
+    [""],
+    ["Shift"],
 ]
 
 
@@ -69,6 +86,11 @@ keyALContainer.id = "letters-al-keys";
 keyALContainer.className = "key-line";
 KeyBoardContainer.insertAdjacentElement('beforeend', keyALContainer);
 
+let keyZMContainer = document.createElement('div');
+keyZMContainer.id = "letters-zm-keys";
+keyZMContainer.className = "key-line";
+KeyBoardContainer.insertAdjacentElement('beforeend', keyZMContainer);
+
 function insertLineOfKeys (arr, tag){
     for(let i=0; i< arr.length; i++){
         let keyDiv = document.createElement('div');
@@ -92,6 +114,7 @@ function insertLineOfKeys (arr, tag){
 
 insertLineOfKeys(lettersLineQP, keyQPContainer);
 insertLineOfKeys(lettersLineAL, keyALContainer);
+insertLineOfKeys(lettersLineZM, keyZMContainer);
 
 for(let i=0; i<numberKeys.length; i++){
     let keyDiv = document.createElement('div');
@@ -129,3 +152,17 @@ capsLock.classList.add("caps-lock");
 
 let enter = document.querySelector("#letters-al-keys .key:last-child");
 enter.classList.add("enter");
+
+let shift = document.querySelector("#letters-zm-keys .key:first-child");
+shift.classList.add("shift");
+
+let arrowUp  = document.querySelector("#letters-zm-keys .key:nth-child(13)");
+arrowUp.classList.add("key-img");
+let imgArrowUp = document.createElement("img");
+imgArrowUp.src="./svg/arrow-up.svg";
+imgArrowUp.classList.add("img-vertical-arrows");
+arrowUp.insertAdjacentElement("beforeend", imgArrowUp);
+
+
+let slash  = document.querySelector("#letters-zm-keys .key:nth-child(12)");
+slash.classList.add("key-single");

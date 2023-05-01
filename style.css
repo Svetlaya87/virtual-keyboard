@@ -64,11 +64,25 @@ body {
 }
 
 .caps-lock,
-.enter {
+.enter,
+.shift {
     width: 104px;
     flex-direction: row;
     justify-content: center;
     text-align: center;
+}
+
+.key-img,
+.key-single {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.img-vertical-arrows {
+
+    align-self: center;
+    width: 50%;
+    display: flex;
 }
 
 .key-line {

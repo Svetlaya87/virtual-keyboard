@@ -254,13 +254,13 @@ for(let i=0; i< allkeys.length; i++){
         console.log(e.currentTarget.innerText);
         if( e.currentTarget.innerText == "\\" || e.currentTarget.innerText == "/"){
             textArea.value += e.currentTarget.innerText;
-            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+           // document.getElementById(e.currentTarget.id).classList.add('key-key-down');
 
         } else if(e.currentTarget.innerText == "Space"){
             textArea.value += " ";
-            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+            //document.getElementById(e.currentTarget.id).classList.add('key-key-down');
         } else if( excluds.indexOf(e.currentTarget.id) == -1 && document.getElementById(e.currentTarget.id) !== null){
-            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+            //document.getElementById(e.currentTarget.id).classList.add('key-key-down');
             if(document.activeElement !== textArea && !e.shiftKey) {
                 
                 textArea.value += e.currentTarget.childNodes[0].innerText.toLowerCase();
@@ -271,14 +271,16 @@ for(let i=0; i< allkeys.length; i++){
             }
         }
 
+        document.getElementById(e.currentTarget.id).classList.add('key-key-down');
+
     });
 }
 
 for(let i=0; i< allkeys.length; i++){
     allkeys[i].addEventListener("mouseup", function(e){
         console.log(e.currentTarget.childNodes);
-        if( excluds.indexOf(e.currentTarget.id) == -1 && document.getElementById(e.currentTarget.id) !== null){
-            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
+        if( /*excluds.indexOf(e.currentTarget.id) == -1 &&*/ document.getElementById(e.currentTarget.id) !== null){
+            document.getElementById(e.currentTarget.id).classList.remove('key-key-down');
         
         }
 

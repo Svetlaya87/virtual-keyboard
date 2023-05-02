@@ -252,10 +252,13 @@ let allkeys = document.querySelectorAll('.key');
 for(let i=0; i< allkeys.length; i++){
     allkeys[i].addEventListener("mousedown", function(e){
         console.log(e.currentTarget.innerText);
-        if( e.currentTarget.innerText == "\\" || e.currentTarget.innerText == "/" ){
+        if( e.currentTarget.innerText == "\\" || e.currentTarget.innerText == "/"){
             textArea.value += e.currentTarget.innerText;
             document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
 
+        } else if(e.currentTarget.innerText == "Space"){
+            textArea.value += " ";
+            document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
         } else if( excluds.indexOf(e.currentTarget.id) == -1 && document.getElementById(e.currentTarget.id) !== null){
             document.getElementById(e.currentTarget.id).classList.toggle('key-key-down');
             if(document.activeElement !== textArea && !e.shiftKey) {

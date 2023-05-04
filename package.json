@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Svetlaya87/virtual-keyboard/issues"
   },
-  "homepage": "https://github.com/Svetlaya87/virtual-keyboard/tree/virtual-keyboard-work#readme"
+  "homepage": "https://github.com/Svetlaya87/virtual-keyboard/tree/virtual-keyboard-work#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
 }
